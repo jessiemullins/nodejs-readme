@@ -8,6 +8,7 @@ Clone the code from this repositoryto get started!
 
 ## Usage
 After the code from the repository has been cloned, run node index.js in the VS Code terminal to be prompted for input. When the examplereadme.md contains the information for your project, a message appears in the terminal that your README file has been generated.
+Link to walkthrough video: https://drive.google.com/file/d/12kEaaf73HtE-eBuBu6bOQ1TASPvhAJ61/view
 
 
 
