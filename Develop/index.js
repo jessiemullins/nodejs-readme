@@ -1,12 +1,12 @@
-// TODO: Include packages needed for this application
-
 // External packages
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
 
 // Internal modules
+const api = require('./utils/apis').default;
 const generateMarkdown = require('./utils/generateMarkdown.js');
+const { userInfo } = require('os');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -23,18 +23,11 @@ const questions = [
     }
 },
 
-{
-    type: 'input',
-    message: "What is your GitHub username?",
-    name: 'username',
-    default: 'jessiemullins',
-    validate: function (answer) {
-        if (answer.length < 1) {
-            return console.log("A valid username is required.");
-        }
-        return true;
-    }
-},
+{  
+    type: 'input',  
+    name: 'github',  
+    message: 'What is your github username?',
+}, 
 
 {
     type: 'input',
@@ -89,6 +82,8 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
+
+
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, err => {
         if (err) {
@@ -109,10 +104,6 @@ async function init() {
         console.log("Your responses: ", userResponses);
         console.log("Thank you for your responses! Fetching your GitHub data next...");
     
-        // // Call GitHub api for user info
-        // const userInfo = await api.getUser(userResponses);
-        // console.log("Your GitHub user info: ", userInfo);
-    
         // Pass Inquirer userResponses and GitHub userInfo to generateMarkdown
         console.log("Generating your README next...")
         const markdown = generateMarkdown(userResponses, userInfo);
@@ -125,7 +116,5 @@ async function init() {
         console.log(error);
     }
 };
-
-// TODO: Create a function to initialize app
 
 init();

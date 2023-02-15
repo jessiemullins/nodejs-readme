@@ -128,9 +128,8 @@ function generateMarkdown(userResponses, userInfo) {
   <img src="${userInfo.avatar_url}" alt="${userInfo.login}" width="40%" />
   
   For any questions, please contact me with the information below:
- 
-  GitHub: [@${userInfo.login}](${userInfo.url})
-  `;
+
+  ## Github  [${userResponses.github}](https://github.com/${userResponses.github}/)`;
 
   // If GitHub email is not null, add to Developer section
   if (userInfo.email !== null) {
